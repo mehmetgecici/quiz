@@ -19,4 +19,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/movies',[ApiController::class,'getApi']);
+Route::prefix('movies')->group(function () {
+    Route::get('/moviesdatabase',[ApiController::class,'getApiMovies'])->name('movies.moviesdatabase');
+    Route::get('/advanced-movie-search',[ApiController::class,'getApiAdvanced'])->name('movies.advanced-movie-search');
+});
+
+
