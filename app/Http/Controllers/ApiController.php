@@ -21,9 +21,8 @@ class ApiController extends Controller
         }
 
         $curl = curl_init();
-
         curl_setopt_array($curl, [
-            CURLOPT_URL => "https://moviesdatabase.p.rapidapi.com/titles/search/keyword/".$name,
+            CURLOPT_URL => "https://moviesdatabase.p.rapidapi.com/titles/search/keyword/".str_replace(" ", "%20", $name),
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => "",
             CURLOPT_MAXREDIRS => 10,
@@ -91,7 +90,7 @@ class ApiController extends Controller
         $curl = curl_init();
 
         curl_setopt_array($curl, [
-            CURLOPT_URL => "https://advanced-movie-search.p.rapidapi.com/search/movie?query=".$name,
+            CURLOPT_URL => "https://advanced-movie-search.p.rapidapi.com/search/movie?query=".str_replace(" ", "%20", $name),
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => "",
             CURLOPT_MAXREDIRS => 10,
